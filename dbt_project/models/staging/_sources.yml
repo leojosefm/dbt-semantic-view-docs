@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_sales                  # CHANGE: your source name
+    database: RAW                    # CHANGE: your raw database
+    schema: SALES                    # CHANGE: your raw schema
+    tables:
+      - name: sales_orders           # CHANGE: your order-line table
+      - name: products               # CHANGE: your product table

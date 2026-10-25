@@ -1,0 +1,4 @@
+packages:
+  # CHANGE: pin to the version you have verified against your dbt + Snowflake setup
+  - package: Snowflake-Labs/dbt_semantic_view
+    version: [">=1.0.0"]

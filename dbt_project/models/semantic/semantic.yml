@@ -1,0 +1,37 @@
+version: 2
+
+# Column names here are the keys passed to get_semantic_description().
+# Each description pulls from a {% docs %} block, so Markdown stays the single source.
+models:
+  - name: sales_semantic_view
+    description: Sales order analytics by product.
+    columns:
+      # dimensions
+      - name: product_name
+        description: '{{ doc("sem_product_name") }}'
+      - name: product_category
+        description: '{{ doc("sem_product_category") }}'
+      - name: product_brand
+        description: '{{ doc("sem_product_brand") }}'
+      - name: order_date
+        description: '{{ doc("sem_order_date") }}'
+      - name: order_status
+        description: '{{ doc("sem_order_status") }}'
+      # facts
+      - name: net_revenue
+        description: '{{ doc("sem_net_revenue") }}'
+      - name: quantity_sold
+        description: '{{ doc("sem_quantity_sold") }}'
+      - name: discount_amount
+        description: '{{ doc("sem_discount_amount") }}'
+      - name: confirmed_order_id
+        description: '{{ doc("sem_confirmed_order_id") }}'
+      # metrics
+      - name: total_revenue
+        description: '{{ doc("sem_total_revenue") }}'
+      - name: total_quantity
+        description: '{{ doc("sem_total_quantity") }}'
+      - name: total_discount
+        description: '{{ doc("sem_total_discount") }}'
+      - name: total_orders
+        description: '{{ doc("sem_total_orders") }}'

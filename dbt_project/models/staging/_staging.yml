@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_sales_orders
+    description: Cleaned sales order lines, one row per order line.
+    columns:
+      - name: order_line_id
+        tests: [unique, not_null]
+  - name: stg_products
+    description: Cleaned product master data, one row per product.
+    columns:
+      - name: product_id
+        tests: [unique, not_null]

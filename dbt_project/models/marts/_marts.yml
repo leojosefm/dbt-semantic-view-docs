@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: Product dimension, one row per product.
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+  - name: fct_sales_order
+    description: Sales order fact, one row per order line.
+    columns:
+      - name: order_line_id
+        tests: [unique, not_null]
+      - name: product_id
+        tests:
+          - relationships:
+              to: ref('dim_product')
+              field: product_id

@@ -1,0 +1,28 @@
+name: dbt_sales_semantic
+version: '1.0.0'
+config-version: 2
+profile: dbt_sales_semantic          # CHANGE: must match a profile in ~/.dbt/profiles.yml
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+docs-paths: ["docs"]                 # where {% docs %} markdown lives
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  dbt_sales_semantic:
+    staging:
+      +materialized: view
+      +schema: staging               # CHANGE: schema names to suit your warehouse
+      +persist_docs:
+        relation: true
+        columns: true
+    marts:
+      +materialized: table
+      +schema: marts
+      +persist_docs:
+        relation: true
+        columns: true
+    semantic:
+      +materialized: semantic_view   # provided by the dbt_semantic_view package
+      +schema: semantic
