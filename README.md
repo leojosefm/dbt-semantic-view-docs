@@ -21,7 +21,7 @@ Reuse your dbt Markdown descriptions as `COMMENT` properties in Snowflake Semant
 dbt lets you maintain docs centrally in Markdown and reference them from YAML:
 
 ```yaml
-description: '{{ doc("total_revenue") }}'
+description: '{{ doc("sem_product_name") }}'
 ```
 
 With `persist_docs` enabled, dbt persists relation and column comments on supported Snowflake tables and views. The official `persist_docs` docs do not document automatic propagation to **Semantic View** dimensions, facts, or metrics. In the integration this was built against, YAML descriptions resolved in dbt metadata but were **not** written into Semantic View `COMMENT` properties.
@@ -53,11 +53,11 @@ Why not call `doc()` directly inside the Semantic View SQL? In the package conte
 .
 ├── dbt-project/                       # example dbt project
 │   ├── dbt_project.yml
-│   ├── docs/markdown/booking_metrics.md
+│   ├── docs/markdown/product_dimensions.md
 │   ├── macros/get_semantic_description.sql
 │   └── models/semantic/
 │       ├── semantic.yml               # doc() references per column
-│       └── booking_semantic_view.sql  # calls the macro in COMMENT clauses
+│       └── sales_semantic_view.sql  # calls the macro in COMMENT clauses
 └── documentation-repo/                # optional: analyst-owned docs repo
     ├── CODEOWNERS
     ├── docs/markdown/booking_metrics.md
